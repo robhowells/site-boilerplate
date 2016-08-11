@@ -1,0 +1,48 @@
+/*========================================
+
+    Button Styles
+    _____________
+
+
+========================================*/   
+
+@mixin accentColorWay {
+    color: $primary;
+    background: $accent;
+    border-color: $accent;
+}
+
+@mixin disabledColorWay {
+    color: $grey;
+    background: $secondary;
+    border-color: $secondary;
+}
+
+.btn, button, input[type='submit'] { 
+    width: 100%;
+    display: inline;
+    appearance: none; 
+    overflow: hidden;
+    text-align: center;
+    padding: 10px 35px;
+    @include transition;
+    @include headingFont;
+    text-decoration: none;
+    @include font-size(12);
+    text-transform: uppercase;
+    &[disabled] {
+        @include disabledColorWay;
+        &:hover, &:focus {
+            @include disabledColorWay;
+        }
+    }
+}
+
+.btn-block-dark {
+	background: $primary;
+	border: 1px solid $primary; 
+	color: $secondaryVariation1;
+    &:hover, &:focus {
+        @include accentColorWay;
+    }
+}
