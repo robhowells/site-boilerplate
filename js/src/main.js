@@ -1,5 +1,5 @@
 (function ($) {
 
-    //Global JS to go here
+    //Global JS to go here 
 
-})(jQuery); 
+})(jQuery);  
