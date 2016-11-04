@@ -34,7 +34,7 @@
 }
 
 .transition-fast {
-	@include transitionFast;
+	@include transition-fast;
 }
 
 /*========================================
@@ -61,11 +61,11 @@
 ========================================*/
 
 .block-list {
-    @include blockList;
+    @include block-list;
 }
 
 .inline-list {
-    @include inlineList;
+    @include inline-list;
 }
 
 .styled-list {
@@ -81,13 +81,13 @@
 
 .scrollable-on-tablet {
 	@include breakpoint(tablet) {
-	    @include innerScroll;
+	    @include inner-scroll;
 	}
 }
 
 .scrollable-on-phablet {
 	@include breakpoint(phablet) {
-		@include innerScroll;
+		@include inner-scroll;
 	}
 }
 
@@ -115,13 +115,13 @@
 	display: none;
 }
 
-.hidden-on-mobile {
+.hidden-on-phablet {
     @include breakpoint(phablet) {
         display: none;
     }
 }
 
-.shown-on-mobile {
+.shown-on-phablet {
 	display: none;
 	@include breakpoint(phablet) {
         display: block;
@@ -132,19 +132,15 @@
 	display: block;
 }
 
-.text-center {
-	text-align: center;
-}
-
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important;
-}
-
 /*========================================
 
 	Text Helpers
 
 ========================================*/
+
+.text-center {
+	text-align: center;
+}
 
 .text-hidden {
 	font-size: 0;

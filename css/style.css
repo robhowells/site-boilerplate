@@ -9,8 +9,7 @@
 	
 	Credit: Sonny Prince - primary developer of grid.scss
 	https://github.com/sonnyprince
-
-    --------------------------------------
+    _____________
 
 ========================================*/
 /*========================================
@@ -302,9 +301,8 @@
 ========================================*/
 /*========================================
 
-  Normalize Styles
-
-    --------------------------------------
+    Normalize Styles
+    _____________
 
 ========================================*/
 /*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */
@@ -676,8 +674,7 @@ textarea {
 /*========================================
 
 	Base Styles
-
-    --------------------------------------
+	_____________
 
 ========================================*/
 /*========================================
@@ -856,18 +853,18 @@ button {
 ========================================*/
 /*========================================
 
-	Cross Browser Opacity
+    Cross Browser Opacity
 
 ========================================*/
 /*========================================
 
-	REM Cross Browser Font Size 
-	Calculator
+    REM Cross Browser Font Size 
+    Calculator
 
 ========================================*/
 /*========================================
 
-    Cross Browser Vertical Gradient
+    Cross Browser Diagonal Gradient
 
 ========================================*/
 /*========================================
@@ -892,7 +889,7 @@ button {
 ========================================*/
 /*========================================
 
-	Transitions
+    Transitions
 
 ========================================*/
 /*========================================
@@ -912,12 +909,17 @@ button {
 ========================================*/
 /*========================================
 
-    Text ellipsis
+    Text Ellipsis
 
 ========================================*/
 /*========================================
 
    Horizonal Scrolling
+
+========================================*/
+/*========================================
+
+    Aspect Ratio
 
 ========================================*/
 /*========================================
@@ -938,49 +940,21 @@ h1 {
   margin-bottom: 0.5em;
   font-size: 60px;
   font-size: 6rem; }
-  @media (max-width: 1024px) {
-    h1 {
-      font-size: 50px;
-      font-size: 5rem; } }
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 40px;
-      font-size: 4rem; } }
 
 h2 {
   margin-bottom: 0.75em;
   font-size: 45px;
   font-size: 4.5rem; }
-  @media (max-width: 1024px) {
-    h2 {
-      font-size: 40px;
-      font-size: 4rem; } }
-  @media (max-width: 768px) {
-    h2 {
-      font-size: 30px;
-      font-size: 3rem; } }
 
 h3 {
   margin-bottom: 0.75em;
   font-size: 35px;
   font-size: 3.5rem; }
-  @media (max-width: 1024px) {
-    h3 {
-      font-size: 30px;
-      font-size: 3rem; } }
-  @media (max-width: 768px) {
-    h3 {
-      font-size: 25px;
-      font-size: 2.5rem; } }
 
 h4 {
   margin-bottom: 1em;
   font-size: 25px;
   font-size: 2.5rem; }
-  @media (max-width: 768px) {
-    h4 {
-      font-size: 22px;
-      font-size: 2.2rem; } }
 
 h5 {
   margin-bottom: 1em;
@@ -998,52 +972,13 @@ p, li, a {
   margin-bottom: 1em;
   font-size: 18px;
   font-size: 1.8rem; }
-  p:last-child, li:last-child, a:last-child {
-    margin-bottom: 0; }
-  p.xs-text, li.xs-text, a.xs-text {
-    font-size: 14px;
-    font-size: 1.4rem; }
-    @media (max-width: 1024px) {
-      p.xs-text, li.xs-text, a.xs-text {
-        font-size: 13px;
-        font-size: 1.3rem; } }
-    @media (max-width: 768px) {
-      p.xs-text, li.xs-text, a.xs-text {
-        font-size: 12px;
-        font-size: 1.2rem; } }
-  p.sm-text, li.sm-text, a.sm-text {
-    font-size: 16px;
-    font-size: 1.6rem; }
-  p.xl-text, li.xl-text, a.xl-text {
-    font-size: 20px;
-    font-size: 2rem; }
-    @media (max-width: 1024px) {
-      p.xl-text, li.xl-text, a.xl-text {
-        font-size: 19px;
-        font-size: 1.9rem; } }
-    @media (max-width: 768px) {
-      p.xl-text, li.xl-text, a.xl-text {
-        font-size: 18px;
-        font-size: 1.8rem; } }
-  @media (max-width: 1024px) {
-    p, li, a {
-      font-size: 17px;
-      font-size: 1.7rem; } }
-  @media (max-width: 768px) {
-    p, li, a {
-      font-size: 16px;
-      font-size: 1.6rem; } }
-  @media (max-width: 760px) {
-    p, li, a {
-      font-size: 15px;
-      font-size: 1.5rem; } }
 
 a:hover {
-  color: #34dddd; }
+  color: #2a2b2f; }
 
 /*========================================
 
-	Typography Helpers
+    Typography Helpers
 
 ========================================*/
 .heading-font {
@@ -1052,6 +987,12 @@ a:hover {
 .body-font {
   font-family: 'Merriweather', serif; }
 
+/*========================================
+
+    Icon Styles
+    _____________
+
+========================================*/
 @font-face {
   font-family: 'icons';
   src: url("../fonts/icons.eot");
@@ -1222,29 +1163,26 @@ a:hover {
   display: none; }
 
 @media (max-width: 760px) {
-  .hidden-on-mobile {
+  .hidden-on-phablet {
     display: none; } }
 
-.shown-on-mobile {
+.shown-on-phablet {
   display: none; }
   @media (max-width: 760px) {
-    .shown-on-mobile {
+    .shown-on-phablet {
       display: block; } }
 
 .display-block {
   display: block; }
-
-.text-center {
-  text-align: center; }
-
-[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-  display: none !important; }
 
 /*========================================
 
 	Text Helpers
 
 ========================================*/
+.text-center {
+  text-align: center; }
+
 .text-hidden {
   font-size: 0;
   position: absolute;
@@ -1254,8 +1192,7 @@ a:hover {
 /*========================================
 
 	Animations Styles
-
-    --------------------------------------
+    _____________
 
 ========================================*/
 /*========================================
@@ -1359,11 +1296,11 @@ a:hover {
 .btn-block-dark {
   background: #2a2b2f;
   border: 1px solid #2a2b2f;
-  color: #f9f9f9; }
+  color: #efefef; }
   .btn-block-dark:hover, .btn-block-dark:focus {
     color: #2a2b2f;
-    background: #34dddd;
-    border-color: #34dddd; }
+    background: #efefef;
+    border-color: #efefef; }
 
 /*========================================
 

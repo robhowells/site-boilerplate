@@ -6,16 +6,16 @@
 
 ========================================*/   
 
-@mixin accentColorWay {
+@mixin primary-colorWay {
     color: $primary;
-    background: $accent;
-    border-color: $accent;
-}
-
-@mixin disabledColorWay {
-    color: $grey;
     background: $secondary;
     border-color: $secondary;
+}
+
+@mixin disabled-colorWay {
+    color: $grey;
+    background: $secondary;
+    border-color: $secondary; 
 }
 
 .btn, button, input[type='submit'] { 
@@ -26,23 +26,23 @@
     text-align: center;
     padding: 10px 35px;
     @include transition;
-    @include headingFont;
+    @include heading-font;
     text-decoration: none;
     @include font-size(12);
-    text-transform: uppercase;
+    text-transform: uppercase; 
     &[disabled] {
-        @include disabledColorWay;
+        @include disabled-colorWay;
         &:hover, &:focus {
-            @include disabledColorWay;
+            @include disabled-colorWay;
         }
     }
 }
 
 .btn-block-dark {
-	background: $primary;
-	border: 1px solid $primary; 
-	color: $secondaryVariation1;
+    background: $primary;
+    border: 1px solid $primary; 
+    color: $secondary;
     &:hover, &:focus {
-        @include accentColorWay;
+        @include primary-colorWay;
     }
 }
