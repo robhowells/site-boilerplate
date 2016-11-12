@@ -1,134 +1,157 @@
 /*========================================
 
-    Mixins
-    _____________
+	Mixins
+	Credit: Sonny Prince - joint developer of mixins.scss
+	https://github.com/sonnyprince
+	_____________
 
 ========================================*/
 
 /*========================================
 
-    Cross Browser Opacity
+	Cross Browser Opacity
 
 ========================================*/
+
+// sass-lint:disable-block no-vendor-prefixes
 
 @mixin opacity($trans) {
-    filter: alpha(opactiy=($trans * 100));
-    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$trans * 100})";
-    -moz-opacity: $trans;
-    -khtml-opacity: $trans; 
-    opacity: $trans;
+	filter: alpha(opactiy=($trans * 100));
+	-ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$trans * 100})';
+	-moz-opacity: $trans;
+	-khtml-opacity: $trans;
+	opacity: $trans;
 }
+
+// sass-lint:enable-block no-vendor-prefixes
 
 /*========================================
 
-    REM Cross Browser Font Size 
-    Calculator
+	REM Cross Browser Font Size 
+	Calculator
 
 ========================================*/
 
-@mixin font-size($sizeValue: 1.6) {
-    font-size: ($sizeValue * 1) + px;
-    font-size: ($sizeValue / 10) + rem;
+@mixin font-size($size-value: 1.6) {
+	font-size: ($size-value * 1) + px;
+	font-size: ($size-value / 10) + rem;
 }
 
 /*========================================
 
-    Cross Browser Diagonal Gradient
+	Cross Browser Diagonal Gradient
 
 ========================================*/
 
-@mixin diagonal-gradient($angle, $fromColor, $fromPercent, $toColor, $toPercent) {
-    background-image:         -webkit-linear-gradient($angle, $fromColor $fromPercent, $toColor $toPercent); /* Chrome10-25,Safari5.1-6 */
-    background-image:             -moz-linear-gradient($angle, $fromColor $fromPercent, $toColor $toPercent); /* FF3.6-15 */
-    background-image:                 -ms-linear-gradient($angle, $fromColor $fromPercent, $toColor $toPercent); /* IE10 */
-    background-image:                     -o-linear-gradient($angle, $fromColor $fromPercent, $toColor $toPercent); /* Opera 11.10+ */
-    background-image:                         linear-gradient($angle, $fromColor $fromPercent, $toColor $toPercent); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#{ie-hex-str($fromColor)}', EndColorStr='#{ie-hex-str($toColor)}')";  /* IE6-9 */
+// sass-lint:disable-block no-duplicate-properties
+
+@mixin diagonal-gradient($angle, $from-color, $from-percent, $to-color, $to-percent) {
+	background: $from-color;
+	background-image:         -webkit-linear-gradient($angle, $from-color $from-percent, $to-color $to-percent); /* Chrome10-25,Safari5.1-6 */
+	background-image:             -moz-linear-gradient($angle, $from-color $from-percent, $to-color $to-percent); /* FF3.6-15 */
+	background-image:                 -ms-linear-gradient($angle, $from-color $from-percent, $to-color $to-percent); /* IE10 */
+	background-image:                     -o-linear-gradient($angle, $from-color $from-percent, $to-color $to-percent); /* Opera 11.10+ */
+	background-image:                         linear-gradient($angle, $from-color $from-percent, $to-color $to-percent); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr="#{ie-hex-str($from-color)}", EndColorStr="#{ie-hex-str($to-color)}")';  /* IE6-9 */
 }
+
+// sass-lint:enable-block no-duplicate-properties
 
 /*========================================
 
-    Cross Browser Horizontal Gradient
+	Cross Browser Horizontal Gradient
 
 ========================================*/
 
-@mixin horizontal-gradient($fromColor, $fromPercent, $toColor, $toPercent) {
-    background-image:     -webkit-linear-gradient(left,  $fromColor $fromPercent, $toColor $toPercent); /* Chrome10-25,Safari5.1-6 */
-    background-image:         -moz-linear-gradient(left,  $fromColor $fromPercent, $toColor $toPercent); /* FF3.6-15 */
-    background-image:           -ms-linear-gradient(left, $fromColor $fromPercent, $toColor $toPercent); /* IE10 */
-    background-image:               -o-linear-gradient(left, $fromColor $fromPercent, $toColor $toPercent); /* Opera 11.10+ */
-    background-image:                   linear-gradient(to right,  $fromColor $fromPercent, $toColor $toPercent); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: "progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr='#{ie-hex-str($fromColor)}', EndColorStr='#{ie-hex-str($toColor)}')"; /* IE6-9 */
+// sass-lint:disable-block no-duplicate-properties
+
+@mixin horizontal-gradient($from-color, $from-percent, $to-color, $to-percent) {
+	background: $from-color;
+	background-image:     -webkit-linear-gradient(left,  $from-color $from-percent, $to-color $to-percent); /* Chrome10-25,Safari5.1-6 */
+	background-image:         -moz-linear-gradient(left,  $from-color $from-percent, $to-color $to-percent); /* FF3.6-15 */
+	background-image:           -ms-linear-gradient(left, $from-color $from-percent, $to-color $to-percent); /* IE10 */
+	background-image:               -o-linear-gradient(left, $from-color $from-percent, $to-color $to-percent); /* Opera 11.10+ */
+	background-image:                   linear-gradient(to right,  $from-color $from-percent, $to-color $to-percent); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=1,StartColorStr="#{ie-hex-str($from-color)}", EndColorStr="#{ie-hex-str($to-color)}")'; /* IE6-9 */
 }
+
+// sass-lint:enable-block no-duplicate-properties
 
 /*========================================
 
-    List styles
+	Cross Browser Vertical Gradient
+
+========================================*/
+
+// sass-lint:disable-block no-duplicate-properties
+
+@mixin vertical-gradient($from-color, $from-percent, $to-color, $to-percent) {
+	background: $from-color;
+	background-image:     -webkit-linear-gradient(down,  $from-color $from-percent, $to-color $to-percent); /* Chrome10-25,Safari5.1-6 */
+	background-image:         -moz-linear-gradient(down,  $from-color $from-percent, $to-color $to-percent); /* FF3.6-15 */
+	background-image:           -ms-linear-gradient(down, $from-color $from-percent, $to-color $to-percent); /* IE10 */
+	background-image:               -o-linear-gradient(down, $from-color $from-percent, $to-color $to-percent); /* Opera 11.10+ */
+	background-image:                   linear-gradient(to bottom,  $from-color $from-percent, $to-color $to-percent); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=0StartColorStr="#{ie-hex-str($from-color)}", EndColorStr="#{ie-hex-str($to-color)}")'; /* IE6-9 */
+}
+
+// sass-lint:enable-block no-duplicate-properties
+
+/*========================================
+
+	List styles
 
 ========================================*/
 
 @mixin block-list {
-    margin-left: 0px;
-    list-style: none;
-    & > li {
-        float: none;
-        display: block;
-    }
+	margin-left: 0;
+	list-style: none;
+	& > li {
+		float: none;
+		display: block;
+	}
 }
 
 @mixin inline-list {
-    margin-left: 0px;
-    list-style: none;
-    & > li {
-        float: left;
-        margin-bottom: 0px;
-    }
+	margin-left: 0;
+	list-style: none;
+	& > li {
+		float: left;
+		margin-bottom: 0;
+	}
 }
 
 /*========================================
 
-    Clearfix
+	Clearfix
 
 ========================================*/
 
 @mixin clear {
-    &:before, &:after {
-        content: "\0020";
-        display: block;
-        height: 0;
-        overflow: hidden;
-    }
-    &:after {
-        clear: both;
-    }
+	&::before,
+	&::after {
+		content: '\0020';
+		display: block;
+		height: 0;
+		overflow: hidden;
+	}
+	&::after {
+		clear: both;
+	}
 }
 
 /*========================================
 
-    Placeholder
+	Placeholder
 
 ========================================*/
 
 @mixin placeholder {
-    &::-webkit-input-placeholder {@content}
-    &:-moz-placeholder           {@content}
-    &::-moz-placeholder          {@content}
-    &:-ms-input-placeholder      {@content}  
+	&::-webkit-input-placeholder {@content}
+	&:-moz-placeholder           {@content}
+	&::-moz-placeholder          {@content}
+	&:-ms-input-placeholder      {@content}
 }
-
-/*========================================
-
-    Transitions
-
-========================================*/
-
-@mixin transition { 
-    transition: all 0.3s;
-}
-
-@mixin transition-fast { 
-    transition: all 0.2s;
-} 
 
 /*========================================
 
@@ -137,9 +160,9 @@
 ========================================*/
 
 @mixin background-image {
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 /*========================================
@@ -147,61 +170,61 @@
    Positioning
 
 ========================================*/
- 
+
 @mixin center-vertically {
-    top: 50%;
-    position: absolute;
-    transform: translateY(-50%);
+	top: 50%;
+	position: absolute;
+	transform: translateY(-50%);
 }
 
 /*========================================
 
-    Keyframe animation
+	Keyframe animation
 
 ========================================*/
 
 @mixin animation($animate...) {
-    $max: length($animate);
-    $animations: '';
+	$max: length($animate);
+	$animations: '';
 
-    @for $i from 1 through $max {
-        $animations: #{$animations + nth($animate, $i)};
+	@for $i from 1 through $max {
+		$animations: #{$animations + nth($animate, $i)};
 
-        @if $i < $max {
-            $animations: #{$animations + ", "};
-        }
-    }
-    -webkit-animation: $animations;
-    -moz-animation:    $animations;
-    -o-animation:      $animations;
-    animation:         $animations;
+		@if $i < $max {
+			$animations: #{$animations + ', '};
+		}
+	}
+	-webkit-animation: $animations;
+	-moz-animation:    $animations;
+	-o-animation:      $animations;
+	animation:         $animations;
 }
 
-@mixin keyframes($animationName) {
-    @-webkit-keyframes #{$animationName} {
-        @content;
-    }
-    @-moz-keyframes #{$animationName} {
-        @content;
-    }
-    @-o-keyframes #{$animationName} {
-        @content;
-    }
-    @keyframes #{$animationName} {
-        @content;
-    }
+@mixin keyframes($animation-name) {
+	@-webkit-keyframes #{$animation-name} {
+		@content;
+	}
+	@-moz-keyframes #{$animation-name} {
+		@content;
+	}
+	@-o-keyframes #{$animation-name} {
+		@content;
+	}
+	@keyframes #{$animation-name} {
+		@content;
+	}
 }
 
 /*========================================
 
-    Text Ellipsis
+	Text Ellipsis
 
 ========================================*/
 
 @mixin truncate {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 
 /*========================================
@@ -211,36 +234,50 @@
 ========================================*/
 
 @mixin inner-scroll {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch;
-    & > li {
-        float: none;
-        white-space: normal;
-        display: inline-block;
-    }
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+	-webkit-overflow-scrolling: touch;// sass-lint:disable-line no-misspelled-properties
+	& > li {
+		float: none;
+		white-space: normal;
+		display: inline-block;
+	}
 }
 
 /*========================================
 
-    Aspect Ratio
+	Aspect Ratio
 
 ========================================*/
 
 @mixin aspect-ratio($width, $height) {
-    position: relative;
-    &:before {
-        display: block; 
-        content: "";
-        width: 100%;
-        padding-top: ($height / $width) * 100%;
-    }
-    > .content {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-    }
+	position: relative;
+	&::before {
+		content: '';
+		width: 100%;
+		display: block;
+		padding-top: ($height / $width) * 100%;
+	}
+	> .content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+}
+
+/*========================================
+
+	Responsive Fonts
+
+========================================*/
+
+@mixin rf($break, $size) {
+  @for $i from 1 through length($break) {
+	@include breakpoint(nth($break, $i)) {
+	  @include font-size(nth($size, $i))
+	}
+  }
 }

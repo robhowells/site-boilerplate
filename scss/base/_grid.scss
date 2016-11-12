@@ -4,7 +4,7 @@
 	
 	Credit: Sonny Prince - primary developer of grid.scss
 	https://github.com/sonnyprince
-    _____________
+	_____________
 
 ========================================*/
 
@@ -14,19 +14,17 @@
 
 ========================================*/
 
+$total-columns:		10;
+$column-width:		80;	//Width of your grid columns
+$gutter-width:		25;	//Width of your gutters
 
-$totalColumns:		12;
-$columnWidth:       75;     //Width of your grid columns
-$gutterWidth:       35;     //Width of your gutters
+$want-it-responsive:  YES;    //Do you want the site responsive? 	Answer YES / NO
 
-$wantItResponsive:  YES;    //Do you want the site responsive? 	Answer YES / NO
+$max-width: ( ($total-columns * $column-width) + ( ($total-columns) * $gutter-width) );
 
+$column-width-percentage: (100% / $total-columns) * ( $column-width / ($column-width + $gutter-width) );
 
-$maxWidth: ( ($totalColumns * $columnWidth) + ( ($totalColumns) * $gutterWidth) );
-
-$columnWidthPercent: (100% / $totalColumns) * ( $columnWidth / ($columnWidth + $gutterWidth) );
-
-$gutterWidthPercent: (100% / $maxWidth ) * $gutterWidth;
+$gutter-width-percentage: (100% / $max-width ) * $gutter-width;
 
 
 /*========================================
@@ -40,7 +38,7 @@ $gutterWidthPercent: (100% / $maxWidth ) * $gutterWidth;
 	margin-left: auto;
 	margin-right: auto;
 	box-sizing: content-box;
-	max-width: $maxWidth + 0px;
+	max-width: $max-width + px;
 	@media (max-width: 1024) {
 		padding: 0 15px;
 	}
@@ -53,14 +51,14 @@ $gutterWidthPercent: (100% / $maxWidth ) * $gutterWidth;
 
 ========================================*/
 
-.column, .columns {
+.column,
+.columns {
 	float: left;
-	*display: inline;
-	margin: 0 ($gutterWidthPercent / 2);
-	&.first{
+	margin: 0 ($gutter-width-percentage / 2);
+	&.first {
 		margin-left: 0;
 	}
-	&.last{
+	&.last {
 		margin-right: 0;
 	}
 }
@@ -71,29 +69,22 @@ $gutterWidthPercent: (100% / $maxWidth ) * $gutterWidth;
 
 ========================================*/
 
-.row {
-	*zoom: 1;
-	&:before, &:after {
-		content: " "; /* 1 */
-		display: table; /* 2 */
+.row,
+%row {
+	&::before,
+	&::after {
+		content: '';
+		display: table;
 	}
-	&:after {
+	&::after {
 		clear: both;
 	}
 }
 
 .negative-row {
 	position: relative;
-	margin-left: -($gutterWidthPercent / 2);
-	margin-right: -($gutterWidthPercent / 2);
-}
-
-.negative-mini-mobile {
-	@media only screen and (max-width: 400px) { 
-		padding: 0;
-		margin-left: -($gutterWidthPercent / 2);
-		margin-right: -($gutterWidthPercent / 2);
-	}
+	margin-left: -($gutter-width-percentage / 2);
+	margin-right: -($gutter-width-percentage / 2);
 }
 
 /*========================================
@@ -102,8 +93,8 @@ $gutterWidthPercent: (100% / $maxWidth ) * $gutterWidth;
 
 ========================================*/
 
-$columnsList: one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve;
-$offsetList: half, one, one-half, two, two-half, three, three-half, four, four-half, five, five-half, six, six-half, seven, seven-half, eight, eight-half, nine, nine-half, ten, ten-half, eleven, eleven-half, twelve, twelve-half,;
+$columns-list: one, two, three, four, five, six, seven, eight, nine, ten;
+$offset-list: half, one, one-half, two, two-half, three, three-half, four, four-half, five, five-half, six, six-half, seven, seven-half, eight, eight-half, nine, nine-half, ten;
 
 /*========================================
 
@@ -111,10 +102,9 @@ $offsetList: half, one, one-half, two, two-half, three, three-half, four, four-h
 
 ========================================*/
 
-@function gridUnitWidthPercent($columns) {
-	@return ($columns * $columnWidthPercent) + (($columns - 1) * $gutterWidthPercent);
+@function grid-unit-width-percentage($columns) {
+	@return ($columns * $column-width-percentage) + (($columns - 1) * $gutter-width-percentage);
 }
-
 
 /*========================================
 
@@ -122,15 +112,16 @@ $offsetList: half, one, one-half, two, two-half, three, three-half, four, four-h
 
 ========================================*/
 
-@for $i from 1 through $totalColumns {
-	  
-	.#{nth($columnsList, $i)}.columns {
-		width: gridUnitWidthPercent($i);
+@for $i from 1 through $total-columns {
+	.#{nth($columns-list, $i)} {
+		&.columns {
+			width: grid-unit-width-percentage($i);
+		}
 	}
 }
-@for $i from 1 through ($totalColumns * 2) - 1 {
-	.offset-by-#{nth($offsetList, $i)} {
-		margin-left: gridUnitWidthPercent(($i * 0.5)) + ($gutterWidthPercent*1.5);
+@for $i from 1 through ($total-columns * 2) - 1 {
+	.offset-by-#{ nth($offset-list, $i) } {
+		margin-left: grid-unit-width-percentage(($i * .5)) + ($gutter-width-percentage * 1.5);
 	}
 }
 
@@ -140,66 +131,73 @@ $offsetList: half, one, one-half, two, two-half, three, three-half, four, four-h
 
 ========================================*/
 
-@if $wantItResponsive == YES {
+@if $want-it-responsive == YES {
 	@media only screen and (max-width: 768px) {
-		@for $i from 1 through $totalColumns {
-			.#{nth($columnsList, $i)}-tablet.columns {
-				width: gridUnitWidthPercent($i);
+		@for $i from 1 through $total-columns {
+			.#{nth($columns-list, $i)}-tablet {
+				&.columns {
+					width: grid-unit-width-percentage($i);
+				}
 			}
 		}
-        .offset-by-none-tablet {
-            margin-left: $gutterWidthPercent / 2;
-            margin-right: $gutterWidthPercent / 2;
-        }
+		.offset-by-none-tablet {
+			margin-left: $gutter-width-percentage / 2;
+			margin-right: $gutter-width-percentage / 2;
+		}
 	}
 	@media only screen and (max-width: 760px) {
 		.columns {
 			float: none;
 			display: block;
-			margin: 0 1.25% 5%;
-			&.first{
+			&.first {
 				margin-left: 10px;
 			}
-			&.last{
+			&.last {
 				margin-right: 10px;
 			}
 		}
-		@for $i from 1 through $totalColumns {
-			.#{nth($columnsList, $i)}.columns {
-				width: auto;
+		@for $i from 1 through $total-columns {
+			.#{nth($columns-list, $i)} {
+				&.columns {
+					width: auto;
+				}
 			}
 		}
 		@for $i from 1 through 3 {
-			$phabletColWidth: 25% * $i; 
-			.#{nth($columnsList, $i)}-phablet.columns {
-				float: left;
-				margin: 0 (2.5% / 2) 2.5%;
-				width: $phabletColWidth - 2.5;
-                &.mbn {
-                    margin-bottom: 0;
-                }
+			$phablet-col-width: 25% * $i;
+			.#{nth($columns-list, $i)}-phablet {
+				&.columns {
+					float: left;
+					margin: 0 (2.5% / 2) 2.5%;
+					width: $phablet-col-width - 2.5;
+					&.mbn {
+						margin-bottom: 0;
+					}
+				}
 			}
 		}
 	}
-	
 	@media only screen and (max-width: 569px) {
 		@for $i from 1 through 3 {
-			.#{nth($columnsList, $i)}-phablet.columns {
-				width: 97.25%;
+			.#{nth($columns-list, $i)}-phablet {
+				&.columns {
+					width: 97.25%;
+				}
 			}
 		}
 		@for $i from 1 through 2 {
-			$phabletColWidth: 50% * $i; //Interpolation
-			.#{nth($columnsList, $i)}-mobile.columns {
-				margin: 0 (2.5% / 2) 2.5%;
-				width: $phabletColWidth - 2.5;
+			$phablet-col-width: 50% * $i;
+			.#{nth($columns-list, $i)}-mobile {
+				.columns {
+					margin: 0 (2.5% / 2) 2.5%;
+					width: $phablet-col-width - 2.5;
+				}
 			}
 		}
 	}
-}
-@else if $wantItResponsive == NO{
+} @else if $want-it-responsive == NO {
 	.container {
-		width: $maxWidth + 0px; 
+		width: $max-width + px;
 	}
 }
 
@@ -211,34 +209,29 @@ $offsetList: half, one, one-half, two, two-half, three, three-half, four, four-h
 ========================================*/
 
 @mixin breakpoint($point) {
-	@if $point == desktop {
+	@if $point == large-desktop {
+		@media (min-width: 1400px) { @content ; }
+	} @else if $point == normal {
+		@content ;
+	} @else if $point == desktop {
 		@media (max-width: 1200px) { @content ; }
-	}
-	@else if $point == small-desktop {
+	} @else if $point == small-desktop {
 		@media (max-width: 1024px) { @content ; }
-	}
-	@else if $point == small-desktop-up {
+	} @else if $point == small-desktop-up {
 		@media (min-width: 1024px) { @content ; }
-	}
-	@else if $point == tablet {
+	} @else if $point == tablet {
 		@media (max-width: 768px)  { @content ; }
-	} 
-	@else if $point == tablet-up {  
-		@media (min-width: 761px) { @content ; }  
-	}
-	@else if $point == phablet {
+	} @else if $point == tablet-up {
+		@media (min-width: 761px) { @content ; }
+	} @else if $point == phablet {
 		@media (max-width: 760px) { @content ; }
-	}
-	@else if $point == large-mobile {
+	} @else if $point == large-mobile {
 		@media (max-width: 569px)  { @content ; }
-	}
-	@else if $point == mobile {
+	} @else if $point == mobile {
 		@media (max-width: 414px)  { @content ; }
-	} 
-	@else if $point == small-mobile {
+	} @else if $point == small-mobile {
 		@media (max-width: 320px)  { @content ; }
-	}
-	@else {
+	} @else {
 		@media (max-width: $point) { @content ; }
 	}
 }

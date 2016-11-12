@@ -1,10 +1,10 @@
 /*========================================
 
-    Z-Index Styles
-    _________________
+	Z-Index Styles
+	_________________
 
-    This File Is For Setting All Of
-    The Base Z-Index Values For A More
+	This File Is For Setting All Of
+	The Base Z-Index Values For A More
 	Modular & Reusable Approach.
 
 	Credit: Sonny Prince - developer of zindex.scss
@@ -13,7 +13,7 @@
 ========================================*/
 
 
-$zIndexLayers: (
+$z-index-layers: (
 	bottomless-pit:				-9999,
 	below:						-1,
 	default:					1,
@@ -22,7 +22,7 @@ $zIndexLayers: (
 	footer:						800,
 	header:						1000,
 	tooltips: 					1250,
-	dropdown: 					1500,	
+	dropdown: 					1500,
 	overlay:					2000,
 	modal: 						3000,
 	the-godfather: 				9999,
@@ -30,11 +30,11 @@ $zIndexLayers: (
 
 @function z($layer) {
 
-	@if not map-has-key($zIndexLayers, $layer) {
-		@warn "WHOOPS! we didnt find `#{$layer}` in the $zIndexLayers map, try again :)";
+	@if not map-has-key($z-index-layers, $layer) {
+		@warn 'WHOOPS! we didnt find `#{$layer}` in the $z-index-layers map, try again :)';
 	}
 
-	@return map-get($zIndexLayers, $layer);
+	@return map-get($z-index-layers, $layer);
 
 }
 

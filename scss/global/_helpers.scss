@@ -16,25 +16,23 @@
 }
 
 .mb {
-	margin-bottom: ($gutterWidthPercent /1.5);
+	margin-bottom: ($gutter-width-percentage / 1.5);
 }
 
-.mb25 { 
-    margin-bottom: 25px
+.mb25 {
+	margin-bottom: 25px;
 }
 
-/*========================================
-
-	Transition Helpers
-
-========================================*/
-
-.transition {
-	@include transition;
+.npm {
+	@include breakpoint(mobile) {
+		padding: 0;
+	}
 }
 
-.transition-fast {
-	@include transition-fast;
+.nmm {
+	@include breakpoint(mobile) {
+		margin: 0;
+	}
 }
 
 /*========================================
@@ -49,7 +47,7 @@
 	--------------------------------------
 
 	.shake {
-	    @include animation('shake 0.5s');
+		@include animation('shake 0.5s');
 	}
 
 ========================================*/
@@ -61,27 +59,27 @@
 ========================================*/
 
 .block-list {
-    @include block-list;
+	@include block-list;
 }
 
 .inline-list {
-    @include inline-list;
+	@include inline-list;
 }
 
 .styled-list {
 	margin-left: 20px;
 	margin-bottom: 1.5em;
 	li {
-		margin-bottom: 0.5em;
+		margin-bottom: .5em;
 		&:last-child {
-	        margin-bottom: 0;
-	    }
+			margin-bottom: 0;
+		}
 	}
 }
 
 .scrollable-on-tablet {
 	@include breakpoint(tablet) {
-	    @include inner-scroll;
+		@include inner-scroll;
 	}
 }
 
@@ -97,12 +95,12 @@
 
 ========================================*/
 
-.same-height-children { 
+.same-height-children {
 	display: flex;
 	align-items: stretch;
 	@include breakpoint(phablet) {
 		display: block;
-	} 
+	}
 }
 
 /*========================================
@@ -116,20 +114,29 @@
 }
 
 .hidden-on-phablet {
-    @include breakpoint(phablet) {
-        display: none;
-    }
+	@include breakpoint(phablet) {
+		display: none;
+	}
 }
 
 .shown-on-phablet {
 	display: none;
 	@include breakpoint(phablet) {
-        display: block;
-    }
+		display: block;
+	}
 }
 
 .display-block {
 	display: block;
+}
+
+.right {
+	float: right;
+	&-on-desktop {
+		@include breakpoint(phablet) {
+			float: none;
+		}
+	}
 }
 
 /*========================================
@@ -144,7 +151,24 @@
 
 .text-hidden {
 	font-size: 0;
-    position: absolute;
-    color: transparent;
-    text-indent: -99999px;
+	position: absolute;
+	color: transparent;
+	text-indent: -99999px;
+}
+
+.body-font {
+	@include body-font;
+	&-bold {
+		@include body-font;
+	}
+}
+
+.heading-font {
+	@include heading-font;
+	&-light {
+		@include heading-font-light;
+	}
+	&-bold {
+		@include heading-font-bold;
+	}
 }

@@ -1,81 +1,86 @@
 /*========================================
 
-    Typography Styles
-    _____________
+	Typography Styles
+	_____________
 
 ========================================*/
 
-@mixin heading-font() {
-    font-family: 'Raleway', sans-serif;
+@mixin body-font {
+	font-family: 'Light Font Name TBC', Arial, 'Helvetica Neue', Helvetica, sans-serif;
 }
 
-@mixin body-font() {
-    font-family: 'Merriweather', serif;
+@mixin body-font-bold {
+	font-family: 'Normal Font Name TBC', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+}
+
+@mixin heading-font-light {
+	@include body-font;
+}
+
+@mixin heading-font {
+	@include body-font-bold;
+}
+
+@mixin heading-font-bold {
+	font-family: 'Bold Font Name TBC', Arial, 'Helvetica Neue', Helvetica, sans-serif;
 }
 
 body {
-    @include body-font;
+	@include body-font;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    color: $primary;
-    line-height: 1.2;
-    @include heading-font;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	line-height: 1.2;
+	margin-bottom: .5em;
+	@include heading-font;
 }
- 
+
 h1 {
-    margin-bottom: 0.5em;
-    @include font-size(60);
+	@include rf(normal desktop small-desktop phablet, 28 25 22 20);
 }
 
 h2 {
-    margin-bottom: 0.75em; 
-    @include font-size(45);
+	@include rf(normal desktop small-desktop, 18 16 15);
 }
 
 h3 {
-    margin-bottom: 0.75em;
-    @include font-size(35);
+	@include rf(normal desktop phablet mobile, 15 14 13 12);
 }
 
 h4 {
-    margin-bottom: 1em;
-    @include font-size(25);
+	@include rf(normal desktop phablet, 14 13 12);
 }
 
-h5 {
-    margin-bottom: 1em;
-    @include font-size(20);
+ul,
+ol {
+	margin-left: 20px;
 }
 
-h6 {
-    margin-bottom: 1em;
-    @include font-size(18);
+p,
+li,
+a {
+	line-height: 1.5;
+	margin-bottom: 1em;
+	@include rf(normal desktop phablet, 14 13 12);
+	&:last-child {
+		margin-bottom: 0;
+	}
 }
 
-p, li, a {
-    line-height: 2;
-    color: $primary;
-    margin-bottom: 1em;
-    @include font-size(18);
+p,
+li,
+a {
+	color: $primary;
 }
 
 a {
-    &:hover {
-        color: $primary;  
-    }
-}
-
-/*========================================
-
-    Typography Helpers
-
-========================================*/
-
-.heading-font {
-    @include heading-font;
-}
-
-.body-font {
-    @include body-font;
+	text-decoration: none;
+	&:hover {
+		color: $accent;
+	}
 }

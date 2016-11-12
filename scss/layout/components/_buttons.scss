@@ -1,48 +1,58 @@
 /*========================================
 
-    Button Styles
-    _____________
+	Button Styles
+	_____________
 
 
-========================================*/   
+========================================*/
 
-@mixin primary-colorWay {
-    color: $primary;
-    background: $secondary;
-    border-color: $secondary;
+@mixin primary-color-way {
+	color: $primary;
+	background: $accent;
+	border-color: $accent;
 }
 
-@mixin disabled-colorWay {
-    color: $grey;
-    background: $secondary;
-    border-color: $secondary; 
+@mixin disabled-color-way {
+	color: $primary;
+	background: $secondary;
+	border-color: $secondary;
 }
 
-.btn, button, input[type='submit'] { 
-    width: 100%;
-    display: inline;
-    appearance: none; 
-    overflow: hidden;
-    text-align: center;
-    padding: 10px 35px;
-    @include transition;
-    @include heading-font;
-    text-decoration: none;
-    @include font-size(12);
-    text-transform: uppercase; 
-    &[disabled] {
-        @include disabled-colorWay;
-        &:hover, &:focus {
-            @include disabled-colorWay;
-        }
-    }
+.btn,
+button {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	cursor: pointer;
+	overflow: hidden;
+	appearance: none;
+	text-align: center;
+	display: inline-block;
+	@include heading-font;
+	text-decoration: none;
+	@include rf(normal, 16);
+	background: transparent;
+	text-transform: uppercase;
+	&[disabled] {
+		cursor: not-allowed;
+		@include disabled-color-way;
+		&:hover,
+		&:focus {
+			@include disabled-color-way;
+		}
+	}
 }
 
-.btn-block-dark {
-    background: $primary;
-    border: 1px solid $primary; 
-    color: $secondary;
-    &:hover, &:focus {
-        @include primary-colorWay;
-    }
+.btn-padded {
+	border: 1px solid;
+	padding: 10px 25px;
+	border-radius: 3px;
+}
+
+.btn-block-primary {
+	@include primary-color-way;
+	&:hover,
+	&:focus {
+		@include primary-color-way;
+	}
 }
