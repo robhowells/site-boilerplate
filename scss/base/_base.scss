@@ -39,15 +39,17 @@ time, mark, audio, video {
 
 ========================================*/
 
-.clearfix
-&::before,
-&::after {
-	content: ''; /* 1 */
-	display: table; /* 2 */
+.clearfix {
+	&::before,
+	&::after {
+		content: ''; /* 1 */
+		display: table; /* 2 */
+	}
 	&::after {
 		clear: both;
 	}
 }
+
 /*========================================
 
 	Box Layout
