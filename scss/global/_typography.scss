@@ -1,32 +1,20 @@
 /*========================================
 
-	Typography Styles
-	_____________
+    Typography Styles
+    _____________
 
 ========================================*/
 
-@mixin body-font {
-	font-family: 'Light Font Name TBC', Arial, 'Helvetica Neue', Helvetica, sans-serif;
-}
-
-@mixin body-font-bold {
-	font-family: 'Normal Font Name TBC', Arial, 'Helvetica Neue', Helvetica, sans-serif;
-}
-
-@mixin heading-font-light {
-	@include body-font;
-}
-
 @mixin heading-font {
-	@include body-font-bold;
+    font-family: 'Open Sans', sans-serif;
 }
 
-@mixin heading-font-bold {
-	font-family: 'Bold Font Name TBC', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+@mixin body-font {
+    font-family: 'Open Sans', sans-serif;
 }
 
 body {
-	@include body-font;
+    @include body-font;
 }
 
 h1,
@@ -35,52 +23,61 @@ h3,
 h4,
 h5,
 h6 {
-	line-height: 1.2;
-	margin-bottom: .5em;
-	@include heading-font;
+    color: $primary;
+    line-height: 1.2;
+    margin-bottom: 1em;
+    @include heading-font;
 }
 
 h1 {
-	@include rf(normal desktop small-desktop phablet, 28 25 22 20);
+    @include font-size(60);
 }
 
 h2 {
-	@include rf(normal desktop small-desktop, 18 16 15);
+    @include font-size(45);
 }
 
 h3 {
-	@include rf(normal desktop phablet mobile, 15 14 13 12);
+    @include font-size(32);
 }
 
 h4 {
-	@include rf(normal desktop phablet, 14 13 12);
+    @include font-size(22);
 }
 
-ul,
-ol {
-	margin-left: 20px;
+h5 {
+    @include font-size(18);
 }
 
-p,
-li,
-a {
-	line-height: 1.5;
-	margin-bottom: 1em;
-	@include rf(normal desktop phablet, 14 13 12);
-	&:last-child {
-		margin-bottom: 0;
-	}
+h6 {
+    @include font-size(15);
 }
 
 p,
 li,
 a {
-	color: $primary;
+    line-height: 2;
+    color: $primary;
+    margin-bottom: 1em;
+    @include font-size(18);
 }
 
 a {
-	text-decoration: none;
-	&:hover {
-		color: $accent;
-	}
+    &:hover {
+        color: $primary;
+    }
+}
+
+/*========================================
+
+    Typography Helpers
+
+========================================*/
+
+.heading-font {
+    @include heading-font;
+}
+
+.body-font {
+    @include body-font;
 }
