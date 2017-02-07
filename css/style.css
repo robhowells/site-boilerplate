@@ -27,8 +27,8 @@
   margin-left: auto;
   margin-right: auto;
   box-sizing: content-box;
-  max-width: 1050px; }
-  @media (max-width: 1024) {
+  max-width: 1320px; }
+  @media (max-width: 1024px) {
     .container {
       padding: 0 15px; } }
 
@@ -38,17 +38,6 @@
 	Float and Margins
 
 ========================================*/
-.column,
-.columns {
-  float: left;
-  margin: 0 1.19048%; }
-  .column.first,
-  .columns.first {
-    margin-left: 0; }
-  .column.last,
-  .columns.last {
-    margin-right: 0; }
-
 /*========================================
 
 	Clearfix and margin on Rows
@@ -63,8 +52,8 @@
 
 .negative-row {
   position: relative;
-  margin-left: -1.19048%;
-  margin-right: -1.19048%; }
+  margin-left: -1.32576%;
+  margin-right: -1.32576%; }
 
 /*========================================
 
@@ -81,184 +70,220 @@
 	Standard Column Widths And Offsets
 
 ========================================*/
-.one.columns {
-  width: 7.61905%; }
-
-.two.columns {
-  width: 17.61905%; }
-
-.three.columns {
-  width: 27.61905%; }
-
-.four.columns {
-  width: 37.61905%; }
-
-.five.columns {
-  width: 47.61905%; }
-
-.six.columns {
-  width: 57.61905%; }
-
-.seven.columns {
-  width: 67.61905%; }
-
-.eight.columns {
-  width: 77.61905%; }
-
-.nine.columns {
-  width: 87.61905%; }
-
-.ten.columns {
-  width: 97.61905%; }
-
-.offset-by-half {
-  margin-left: 6.19048%; }
-
-.offset-by-one {
-  margin-left: 11.19048%; }
-
-.offset-by-one-half {
-  margin-left: 16.19048%; }
-
-.offset-by-two {
-  margin-left: 21.19048%; }
-
-.offset-by-two-half {
-  margin-left: 26.19048%; }
-
-.offset-by-three {
-  margin-left: 31.19048%; }
-
-.offset-by-three-half {
-  margin-left: 36.19048%; }
-
-.offset-by-four {
-  margin-left: 41.19048%; }
-
-.offset-by-four-half {
-  margin-left: 46.19048%; }
-
-.offset-by-five {
-  margin-left: 51.19048%; }
-
-.offset-by-five-half {
-  margin-left: 56.19048%; }
-
-.offset-by-six {
-  margin-left: 61.19048%; }
-
-.offset-by-six-half {
-  margin-left: 66.19048%; }
-
-.offset-by-seven {
-  margin-left: 71.19048%; }
-
-.offset-by-seven-half {
-  margin-left: 76.19048%; }
-
-.offset-by-eight {
-  margin-left: 81.19048%; }
-
-.offset-by-eight-half {
-  margin-left: 86.19048%; }
-
-.offset-by-nine {
-  margin-left: 91.19048%; }
-
-.offset-by-nine-half {
-  margin-left: 96.19048%; }
-
 /*========================================
 
-	Resonsive Column Widths And Offsets
+	Tablet Columns
 
 ========================================*/
-@media only screen and (max-width: 768px) {
-  .one-tablet.columns {
-    width: 7.61905%; }
-  .two-tablet.columns {
-    width: 17.61905%; }
-  .three-tablet.columns {
-    width: 27.61905%; }
-  .four-tablet.columns {
-    width: 37.61905%; }
-  .five-tablet.columns {
-    width: 47.61905%; }
-  .six-tablet.columns {
-    width: 57.61905%; }
-  .seven-tablet.columns {
-    width: 67.61905%; }
-  .eight-tablet.columns {
-    width: 77.61905%; }
-  .nine-tablet.columns {
-    width: 87.61905%; }
-  .ten-tablet.columns {
-    width: 97.61905%; }
-  .offset-by-none-tablet {
-    margin-left: 1.19048%;
-    margin-right: 1.19048%; } }
+/*========================================
 
-@media only screen and (max-width: 760px) {
-  .columns {
-    float: none;
-    display: block; }
-    .columns.first {
-      margin-left: 10px; }
-    .columns.last {
-      margin-right: 10px; }
-  .one.columns {
-    width: auto; }
-  .two.columns {
-    width: auto; }
-  .three.columns {
-    width: auto; }
-  .four.columns {
-    width: auto; }
-  .five.columns {
-    width: auto; }
-  .six.columns {
-    width: auto; }
-  .seven.columns {
-    width: auto; }
-  .eight.columns {
-    width: auto; }
-  .nine.columns {
-    width: auto; }
-  .ten.columns {
-    width: auto; }
+	Phablet Columns
+
+========================================*/
+/*========================================
+
+	Mobile Columns
+
+========================================*/
+/*========================================
+
+	Set Up Grid
+
+========================================*/
+.columns {
+  float: none;
+  display: block;
+  margin: 0 1.25% 5%; }
+  .columns.first {
+    margin-left: 10px; }
+  .columns.last {
+    margin-right: 10px; }
+
+.one.columns {
+  width: auto; }
+
+.two.columns {
+  width: auto; }
+
+.three.columns {
+  width: auto; }
+
+.four.columns {
+  width: auto; }
+
+.five.columns {
+  width: auto; }
+
+.six.columns {
+  width: auto; }
+
+.seven.columns {
+  width: auto; }
+
+.eight.columns {
+  width: auto; }
+
+.nine.columns {
+  width: auto; }
+
+.ten.columns {
+  width: auto; }
+
+.eleven.columns {
+  width: auto; }
+
+.twelve.columns {
+  width: auto; }
+
+.one-phablet.columns {
+  width: 97.25%; }
+
+.two-phablet.columns {
+  width: 97.25%; }
+
+.three-phablet.columns {
+  width: 97.25%; }
+
+.one-mobile.columns {
+  float: left;
+  margin: 0 1.25% 2.5%;
+  width: 47.5%; }
+
+.two-mobile.columns {
+  float: left;
+  margin: 0 1.25% 2.5%;
+  width: 97.5%; }
+
+@media only screen and (min-width: 569px) {
   .one-phablet.columns {
     float: left;
     margin: 0 1.25% 2.5%;
     width: 22.5%; }
-    .one-phablet.columns.mbn {
-      margin-bottom: 0; }
   .two-phablet.columns {
     float: left;
     margin: 0 1.25% 2.5%;
     width: 47.5%; }
-    .two-phablet.columns.mbn {
-      margin-bottom: 0; }
   .three-phablet.columns {
     float: left;
     margin: 0 1.25% 2.5%;
-    width: 72.5%; }
-    .three-phablet.columns.mbn {
-      margin-bottom: 0; } }
+    width: 72.5%; } }
 
-@media only screen and (max-width: 569px) {
-  .one-phablet.columns {
-    width: 97.25%; }
-  .two-phablet.columns {
-    width: 97.25%; }
-  .three-phablet.columns {
-    width: 97.25%; }
-  .one-mobile .columns {
-    margin: 0 1.25% 2.5%;
-    width: 47.5%; }
-  .two-mobile .columns {
-    margin: 0 1.25% 2.5%;
-    width: 97.5%; } }
+@media only screen and (min-width: 760px) {
+  .one-tablet.columns {
+    width: 5.68182%; }
+  .two-tablet.columns {
+    width: 14.01515%; }
+  .three-tablet.columns {
+    width: 22.34848%; }
+  .four-tablet.columns {
+    width: 30.68182%; }
+  .five-tablet.columns {
+    width: 39.01515%; }
+  .six-tablet.columns {
+    width: 47.34848%; }
+  .seven-tablet.columns {
+    width: 55.68182%; }
+  .eight-tablet.columns {
+    width: 64.01515%; }
+  .nine-tablet.columns {
+    width: 72.34848%; }
+  .ten-tablet.columns {
+    width: 80.68182%; }
+  .eleven-tablet.columns {
+    width: 89.01515%; }
+  .twelve-tablet.columns {
+    width: 97.34848%; }
+  .offset-by-none-tablet {
+    margin-left: 1.32576%;
+    margin-right: 1.32576%; } }
 
+@media only screen and (min-width: 768px) {
+  .column,
+  .columns {
+    float: left;
+    margin: 0 1.32576%; }
+    .column.first,
+    .columns.first {
+      margin-left: 0; }
+    .column.last,
+    .columns.last {
+      margin-right: 0; }
+  .one.columns {
+    width: 5.68182%; }
+  .two.columns {
+    width: 14.01515%; }
+  .three.columns {
+    width: 22.34848%; }
+  .four.columns {
+    width: 30.68182%; }
+  .five.columns {
+    width: 39.01515%; }
+  .six.columns {
+    width: 47.34848%; }
+  .seven.columns {
+    width: 55.68182%; }
+  .eight.columns {
+    width: 64.01515%; }
+  .nine.columns {
+    width: 72.34848%; }
+  .ten.columns {
+    width: 80.68182%; }
+  .eleven.columns {
+    width: 89.01515%; }
+  .twelve.columns {
+    width: 97.34848%; }
+  .offset-by-half {
+    margin-left: 5.49242%; }
+  .offset-by-one {
+    margin-left: 9.65909%; }
+  .offset-by-one-half {
+    margin-left: 13.82576%; }
+  .offset-by-two {
+    margin-left: 17.99242%; }
+  .offset-by-two-half {
+    margin-left: 22.15909%; }
+  .offset-by-three {
+    margin-left: 26.32576%; }
+  .offset-by-three-half {
+    margin-left: 30.49242%; }
+  .offset-by-four {
+    margin-left: 34.65909%; }
+  .offset-by-four-half {
+    margin-left: 38.82576%; }
+  .offset-by-five {
+    margin-left: 42.99242%; }
+  .offset-by-five-half {
+    margin-left: 47.15909%; }
+  .offset-by-six {
+    margin-left: 51.32576%; }
+  .offset-by-six-half {
+    margin-left: 55.49242%; }
+  .offset-by-seven {
+    margin-left: 59.65909%; }
+  .offset-by-seven-half {
+    margin-left: 63.82576%; }
+  .offset-by-eight {
+    margin-left: 67.99242%; }
+  .offset-by-eight-half {
+    margin-left: 72.15909%; }
+  .offset-by-nine {
+    margin-left: 76.32576%; }
+  .offset-by-nine-half {
+    margin-left: 80.49242%; }
+  .offset-by-ten {
+    margin-left: 84.65909%; }
+  .offset-by-ten-half {
+    margin-left: 88.82576%; }
+  .offset-by-eleven {
+    margin-left: 92.99242%; }
+  .offset-by-eleven-half {
+    margin-left: 97.15909%; } }
+
+/*========================================
+
+	Fixed Width / Not Responsive
+
+========================================*/
 /*========================================
 
 	Resonsive Mixin For Responsive 
@@ -670,17 +695,14 @@ time, mark, audio, video {
 	Micro Clearfix
 
 ========================================*/
-.clearfix
-::before,
-::after {
+.clearfix::before, .clearfix::after {
   content: '';
   /* 1 */
   display: table;
   /* 2 */ }
-  .clearfix
-::before::after,
-  ::after::after {
-    clear: both; }
+
+.clearfix::after {
+  clear: both; }
 
 /*========================================
 
@@ -890,12 +912,12 @@ html, body {
 ========================================*/
 /*========================================
 
-	Typography Styles
-	_____________
+    Typography Styles
+    _____________
 
 ========================================*/
 body {
-  font-family: 'Light Font Name TBC', Arial, 'Helvetica Neue', Helvetica, sans-serif; }
+  font-family: 'Open Sans', sans-serif; }
 
 h1,
 h2,
@@ -903,103 +925,57 @@ h3,
 h4,
 h5,
 h6 {
+  color: #2a2b2f;
   line-height: 1.2;
-  margin-bottom: .5em;
-  font-family: 'Normal Font Name TBC', Arial, 'Helvetica Neue', Helvetica, sans-serif; }
+  margin-bottom: 1em;
+  font-family: 'Open Sans', sans-serif; }
 
 h1 {
-  font-size: 28px;
-  font-size: 2.8rem; }
-  @media (max-width: 1200px) {
-    h1 {
-      font-size: 25px;
-      font-size: 2.5rem; } }
-  @media (max-width: 1024px) {
-    h1 {
-      font-size: 22px;
-      font-size: 2.2rem; } }
-  @media (max-width: 760px) {
-    h1 {
-      font-size: 20px;
-      font-size: 2rem; } }
+  font-size: 60px;
+  font-size: 6rem; }
 
 h2 {
-  font-size: 18px;
-  font-size: 1.8rem; }
-  @media (max-width: 1200px) {
-    h2 {
-      font-size: 16px;
-      font-size: 1.6rem; } }
-  @media (max-width: 1024px) {
-    h2 {
-      font-size: 15px;
-      font-size: 1.5rem; } }
+  font-size: 45px;
+  font-size: 4.5rem; }
 
 h3 {
-  font-size: 15px;
-  font-size: 1.5rem; }
-  @media (max-width: 1200px) {
-    h3 {
-      font-size: 14px;
-      font-size: 1.4rem; } }
-  @media (max-width: 760px) {
-    h3 {
-      font-size: 13px;
-      font-size: 1.3rem; } }
-  @media (max-width: 414px) {
-    h3 {
-      font-size: 12px;
-      font-size: 1.2rem; } }
+  font-size: 32px;
+  font-size: 3.2rem; }
 
 h4 {
-  font-size: 14px;
-  font-size: 1.4rem; }
-  @media (max-width: 1200px) {
-    h4 {
-      font-size: 13px;
-      font-size: 1.3rem; } }
-  @media (max-width: 760px) {
-    h4 {
-      font-size: 12px;
-      font-size: 1.2rem; } }
+  font-size: 22px;
+  font-size: 2.2rem; }
 
-ul,
-ol {
-  margin-left: 20px; }
+h5 {
+  font-size: 18px;
+  font-size: 1.8rem; }
+
+h6 {
+  font-size: 15px;
+  font-size: 1.5rem; }
 
 p,
 li,
 a {
-  line-height: 1.5;
+  line-height: 2;
+  color: #2a2b2f;
   margin-bottom: 1em;
-  font-size: 14px;
-  font-size: 1.4rem; }
-  @media (max-width: 1200px) {
-    p,
-    li,
-    a {
-      font-size: 13px;
-      font-size: 1.3rem; } }
-  @media (max-width: 760px) {
-    p,
-    li,
-    a {
-      font-size: 12px;
-      font-size: 1.2rem; } }
-  p:last-child,
-  li:last-child,
-  a:last-child {
-    margin-bottom: 0; }
+  font-size: 18px;
+  font-size: 1.8rem; }
 
-p,
-li,
-a {
+a:hover {
   color: #2a2b2f; }
 
-a {
-  text-decoration: none; }
-  a:hover {
-    color: #34dddd; }
+/*========================================
+
+    Typography Helpers
+
+========================================*/
+.heading-font {
+  font-family: 'Open Sans', sans-serif; }
+
+.body-font {
+  font-family: 'Open Sans', sans-serif; }
 
 /*========================================
 
@@ -1070,18 +1046,10 @@ a {
   margin-bottom: 0; }
 
 .mb {
-  margin-bottom: 1.5873%; }
+  margin-bottom: 1.76768%; }
 
 .mb25 {
   margin-bottom: 25px; }
-
-@media (max-width: 414px) {
-  .npm {
-    padding: 0; } }
-
-@media (max-width: 414px) {
-  .nmm {
-    margin: 0; } }
 
 /*========================================
 
@@ -1094,7 +1062,7 @@ a {
 	--------------------------------------
 
 	.shake {
-		@include animation('shake 0.5s');
+	    @include animation('shake 0.5s');
 	}
 
 ========================================*/
@@ -1125,18 +1093,7 @@ a {
     .styled-list li:last-child {
       margin-bottom: 0; }
 
-@media (max-width: 768px) {
-  .scrollable-on-tablet {
-    overflow-x: scroll;
-    overflow-y: hidden;
-    white-space: nowrap;
-    -webkit-overflow-scrolling: touch; }
-    .scrollable-on-tablet > li {
-      float: none;
-      white-space: normal;
-      display: inline-block; } }
-
-@media (max-width: 760px) {
+@media (min-width: 760px) {
   .scrollable-on-phablet {
     overflow-x: scroll;
     overflow-y: hidden;
@@ -1146,6 +1103,16 @@ a {
       float: none;
       white-space: normal;
       display: inline-block; } }
+
+.overflow-scroll {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch; }
+  .overflow-scroll > li {
+    float: none;
+    white-space: normal;
+    display: inline-block; }
 
 /*========================================
 
@@ -1159,7 +1126,7 @@ a {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch; }
-  @media (max-width: 760px) {
+  @media (min-width: 760px) {
     .same-height-children {
       display: block; } }
 
@@ -1171,24 +1138,12 @@ a {
 .hidden {
   display: none; }
 
-@media (max-width: 760px) {
+@media (min-width: 760px) {
   .hidden-on-phablet {
     display: none; } }
 
-.shown-on-phablet {
-  display: none; }
-  @media (max-width: 760px) {
-    .shown-on-phablet {
-      display: block; } }
-
 .display-block {
   display: block; }
-
-.right {
-  float: right; }
-  @media (max-width: 760px) {
-    .right-on-desktop {
-      float: none; } }
 
 /*========================================
 
@@ -1203,18 +1158,6 @@ a {
   position: absolute;
   color: transparent;
   text-indent: -99999px; }
-
-.body-font {
-  font-family: 'Light Font Name TBC', Arial, 'Helvetica Neue', Helvetica, sans-serif; }
-  .body-font-bold {
-    font-family: 'Light Font Name TBC', Arial, 'Helvetica Neue', Helvetica, sans-serif; }
-
-.heading-font {
-  font-family: 'Normal Font Name TBC', Arial, 'Helvetica Neue', Helvetica, sans-serif; }
-  .heading-font-light {
-    font-family: 'Light Font Name TBC', Arial, 'Helvetica Neue', Helvetica, sans-serif; }
-  .heading-font-bold {
-    font-family: 'Bold Font Name TBC', Arial, 'Helvetica Neue', Helvetica, sans-serif; }
 
 /*========================================
 
@@ -1256,7 +1199,7 @@ a {
 	HTML & Body Styles
 
 ========================================*/
-@media (max-width: 760px) {
+@media (min-width: 760px) {
   body.mobile-no-scroll {
     width: 100%;
     position: fixed; } }
@@ -1307,12 +1250,15 @@ button {
           appearance: none;
   text-align: center;
   display: inline-block;
-  font-family: 'Normal Font Name TBC', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'Open Sans', sans-serif;
   text-decoration: none;
-  font-size: 16px;
-  font-size: 1.6rem;
   background: transparent;
   text-transform: uppercase; }
+  @media (min-width: normal) {
+    .btn,
+    button {
+      font-size: 16px;
+      font-size: 1.6rem; } }
   .btn[disabled],
   button[disabled] {
     cursor: not-allowed;
