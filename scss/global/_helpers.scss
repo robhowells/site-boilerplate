@@ -20,19 +20,7 @@
 }
 
 .mb25 {
-	margin-bottom: 25px;
-}
-
-.npm {
-	@include breakpoint(mobile) {
-		padding: 0;
-	}
-}
-
-.nmm {
-	@include breakpoint(mobile) {
-		margin: 0;
-	}
+    margin-bottom: 25px;
 }
 
 /*========================================
@@ -47,7 +35,7 @@
 	--------------------------------------
 
 	.shake {
-		@include animation('shake 0.5s');
+	    @include animation('shake 0.5s');
 	}
 
 ========================================*/
@@ -59,11 +47,11 @@
 ========================================*/
 
 .block-list {
-	@include block-list;
+    @include block-list;
 }
 
 .inline-list {
-	@include inline-list;
+    @include inline-list;
 }
 
 .styled-list {
@@ -72,14 +60,8 @@
 	li {
 		margin-bottom: .5em;
 		&:last-child {
-			margin-bottom: 0;
-		}
-	}
-}
-
-.scrollable-on-tablet {
-	@include breakpoint(tablet) {
-		@include inner-scroll;
+	        margin-bottom: 0;
+	    }
 	}
 }
 
@@ -87,6 +69,10 @@
 	@include breakpoint(phablet) {
 		@include inner-scroll;
 	}
+}
+
+.overflow-scroll {
+	@include inner-scroll;
 }
 
 /*========================================
@@ -114,29 +100,13 @@
 }
 
 .hidden-on-phablet {
-	@include breakpoint(phablet) {
-		display: none;
-	}
-}
-
-.shown-on-phablet {
-	display: none;
-	@include breakpoint(phablet) {
-		display: block;
-	}
+    @include breakpoint(phablet) {
+        display: none;
+    }
 }
 
 .display-block {
 	display: block;
-}
-
-.right {
-	float: right;
-	&-on-desktop {
-		@include breakpoint(phablet) {
-			float: none;
-		}
-	}
 }
 
 /*========================================
@@ -151,24 +121,7 @@
 
 .text-hidden {
 	font-size: 0;
-	position: absolute;
-	color: transparent;
-	text-indent: -99999px;
-}
-
-.body-font {
-	@include body-font;
-	&-bold {
-		@include body-font;
-	}
-}
-
-.heading-font {
-	@include heading-font;
-	&-light {
-		@include heading-font-light;
-	}
-	&-bold {
-		@include heading-font-bold;
-	}
+    position: absolute;
+    color: transparent;
+    text-indent: -99999px;
 }

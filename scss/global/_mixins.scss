@@ -275,9 +275,9 @@
 ========================================*/
 
 @mixin rf($break, $size) {
-  @for $i from 1 through length($break) {
-	@include breakpoint(nth($break, $i)) {
-	  @include font-size(nth($size, $i))
+	@for $i from 1 through length($break) {
+		@include breakpoint(nth($break, $i)) {
+	  		@include font-size(nth($size, $i))
+		}
 	}
-  }
 }

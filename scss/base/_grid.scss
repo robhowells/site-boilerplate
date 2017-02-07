@@ -14,9 +14,13 @@
 
 ========================================*/
 
-$total-columns:		10;
-$column-width:		80;	//Width of your grid columns
-$gutter-width:		25;	//Width of your gutters
+
+$total-columns:		12;
+$column-width:		75;	//Width of your grid columns
+$gutter-width:		35;	//Width of your gutters
+$mobile-first: 		YES; //Do you want the grid mobile first?
+
+$width-style: 		'max-width';
 
 $want-it-responsive:  YES;    //Do you want the site responsive? 	Answer YES / NO
 
@@ -69,8 +73,7 @@ $gutter-width-percentage: (100% / $max-width ) * $gutter-width;
 
 ========================================*/
 
-.row,
-%row {
+.row {
 	&::before,
 	&::after {
 		content: '';
@@ -93,8 +96,8 @@ $gutter-width-percentage: (100% / $max-width ) * $gutter-width;
 
 ========================================*/
 
-$columns-list: one, two, three, four, five, six, seven, eight, nine, ten;
-$offset-list: half, one, one-half, two, two-half, three, three-half, four, four-half, five, five-half, six, six-half, seven, seven-half, eight, eight-half, nine, nine-half, ten;
+$columns-list: one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve;
+$offset-list: half, one, one-half, two, two-half, three, three-half, four, four-half, five, five-half, six, six-half, seven, seven-half, eight, eight-half, nine, nine-half, ten, ten-half, eleven, eleven-half, twelve, twelve-half,;
 
 /*========================================
 
@@ -131,8 +134,12 @@ $offset-list: half, one, one-half, two, two-half, three, three-half, four, four-
 
 ========================================*/
 
+@if $mobile-first == YES {
+	$width-style: 'min-width';
+}
+
 @if $want-it-responsive == YES {
-	@media only screen and (max-width: 768px) {
+	@media only screen and ($width-style: 768px) {
 		@for $i from 1 through $total-columns {
 			.#{nth($columns-list, $i)}-tablet {
 				&.columns {
@@ -145,10 +152,11 @@ $offset-list: half, one, one-half, two, two-half, three, three-half, four, four-
 			margin-right: $gutter-width-percentage / 2;
 		}
 	}
-	@media only screen and (max-width: 760px) {
+	@media only screen and ($width-style: 760px) {
 		.columns {
 			float: none;
 			display: block;
+			margin: 0 1.25% 5%;
 			&.first {
 				margin-left: 10px;
 			}
@@ -177,7 +185,7 @@ $offset-list: half, one, one-half, two, two-half, three, three-half, four, four-
 			}
 		}
 	}
-	@media only screen and (max-width: 569px) {
+	@media only screen and ($width-style: 569px) {
 		@for $i from 1 through 3 {
 			.#{nth($columns-list, $i)}-phablet {
 				&.columns {
@@ -209,29 +217,21 @@ $offset-list: half, one, one-half, two, two-half, three, three-half, four, four-
 ========================================*/
 
 @mixin breakpoint($point) {
-	@if $point == large-desktop {
-		@media (min-width: 1400px) { @content ; }
-	} @else if $point == normal {
-		@content ;
-	} @else if $point == desktop {
-		@media (max-width: 1200px) { @content ; }
+	@if $point == desktop {
+		@media ($width-style: 1200px) { @content ; }
 	} @else if $point == small-desktop {
-		@media (max-width: 1024px) { @content ; }
-	} @else if $point == small-desktop-up {
-		@media (min-width: 1024px) { @content ; }
+		@media ($width-style: 1024px) { @content ; }
 	} @else if $point == tablet {
-		@media (max-width: 768px)  { @content ; }
-	} @else if $point == tablet-up {
-		@media (min-width: 761px) { @content ; }
+		@media ($width-style: 768px)  { @content ; }
 	} @else if $point == phablet {
-		@media (max-width: 760px) { @content ; }
+		@media ($width-style: 760px) { @content ; }
 	} @else if $point == large-mobile {
-		@media (max-width: 569px)  { @content ; }
+		@media ($width-style: 569px)  { @content ; }
 	} @else if $point == mobile {
-		@media (max-width: 414px)  { @content ; }
+		@media ($width-style: 414px)  { @content ; }
 	} @else if $point == small-mobile {
-		@media (max-width: 320px)  { @content ; }
+		@media ($width-style: 320px)  { @content ; }
 	} @else {
-		@media (max-width: $point) { @content ; }
+		@media ($width-style: $point) { @content ; }
 	}
 }
