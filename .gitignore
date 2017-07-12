@@ -51,7 +51,7 @@ Thumbs.db
 /.bundle
 
 # Ignore the build & temp directory contents
-/dist
+/dist/*
 .tmp/
 !dist/.gitkeep 
 
