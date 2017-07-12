@@ -6,19 +6,19 @@
 
 ========================================*/
 
-// @mixin primary-color-way {
-// 	color: $primary;
-// 	background: $accent;
-// 	border-color: $accent;
-// }
+@mixin primary-color-way {
+	color: palette(brand, primary);
+	background-color: palette(brand, accent);
+	border-color: palette(brand, accent);
+}
 
-// @mixin disabled-color-way {
-// 	color: $primary;
-// 	background: $secondary;
-// 	border-color: $secondary;
-// }
+@mixin disabled-color-way {
+	color: palette(brand, primary);
+	background-color: palette(brand, secondary);
+	border-color: palette(brand, secondary);
+}
 
-.btn,
+.button,
 button {
 	margin: 0;
 	border: 0;
@@ -29,29 +29,26 @@ button {
 	text-align: center;
 	display: inline-block;
 	text-decoration: none;
-	@include rf(normal, 16);
-	background: transparent;
+	background-color: transparent;
 	text-transform: uppercase;
-	&[disabled] {
-		cursor: not-allowed;
-		//@include disabled-color-way;
+	&--padded {
+		border: 1px solid;
+		padding: 8px 20px;
+		border-radius: 3px;
+	}
+	&--primary {
+		@include primary-color-way;
 		&:hover,
 		&:focus {
-			//@include disabled-color-way;
+			@include primary-color-way;
 		}
 	}
-}
-
-.btn-padded {
-	border: 1px solid;
-	padding: 10px 25px;
-	border-radius: 3px;
-}
-
-.btn-block-primary {
-	//@include primary-color-way;
-	&:hover,
-	&:focus {
-		//@include primary-color-way;
+	&[disabled] {
+		cursor: not-allowed;
+		@include disabled-color-way;
+		&:hover,
+		&:focus {
+			@include disabled-color-way;
+		}
 	}
 }
