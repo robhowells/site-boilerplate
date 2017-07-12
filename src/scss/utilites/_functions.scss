@@ -1,0 +1,46 @@
+/*========================================
+
+	Functions
+	_____________
+
+========================================*/
+
+/*========================================
+
+	Colour Function
+
+========================================*/
+
+@function palette($scheme, $color: base) {
+    @return map-get(map-get($colors, $scheme), $color);
+}
+
+/*========================================
+
+	Spacing Function
+
+========================================*/
+
+@function spacing($name) {
+	@if map-has-key($spacing, $name) {
+		@return map-get($spacing, $name);
+	} else {
+		@warn 'The key #{$name} is not in the map ’$spacing’';
+		@return null;
+	}
+};
+
+/*========================================
+
+	Z-index Function
+
+========================================*/
+
+@function zlayer($name) {
+	@if map-has-key($layers, $name) {
+		@return map-get($layers, $name);
+	} else {
+		@warn 'The key #{$name} is not in the map ’$layer’';
+		@return null;
+	}
+};

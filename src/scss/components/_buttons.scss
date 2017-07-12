@@ -1,0 +1,54 @@
+/*========================================
+
+	Buttons
+	_____________
+
+
+========================================*/
+
+@mixin primary-color-way {
+	color: palette(brand, primary);
+	background-color: palette(brand, accent);
+	border-color: palette(brand, accent);
+}
+
+@mixin disabled-color-way {
+	color: palette(brand, primary);
+	background-color: palette(brand, secondary);
+	border-color: palette(brand, secondary);
+}
+
+.button,
+button {
+	margin: 0;
+	border: 0;
+	padding: 0;
+	cursor: pointer;
+	overflow: hidden;
+	appearance: none;
+	text-align: center;
+	display: inline-block;
+	text-decoration: none;
+	background-color: transparent;
+	text-transform: uppercase;
+	&--padded {
+		border: 1px solid;
+		padding: 8px 20px;
+		border-radius: 3px;
+	}
+	&--primary {
+		@include primary-color-way;
+		&:hover,
+		&:focus {
+			@include primary-color-way;
+		}
+	}
+	&[disabled] {
+		cursor: not-allowed;
+		@include disabled-color-way;
+		&:hover,
+		&:focus {
+			@include disabled-color-way;
+		}
+	}
+}
