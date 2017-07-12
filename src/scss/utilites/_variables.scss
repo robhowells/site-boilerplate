@@ -1,0 +1,80 @@
+/*========================================
+
+	Variables
+	_____________
+
+========================================*/
+
+/*========================================
+
+	Grid Variables
+
+========================================*/
+
+$grid-columns: 10;
+$grid-max-width: 1200;
+$gutter-width: 20;
+$gutter-width-percentage: (100% / $grid-max-width) * $gutter-width;
+
+/*========================================
+
+	Breakpoint Variables
+
+========================================*/
+
+$breakpoints: (
+	mobile: 420px,
+	phablet: 760px,
+	tablet: 768px,
+	desktop: 1024px,
+	desktop-large: 1280px
+);
+
+/*========================================
+
+	Colour Variables
+
+========================================*/
+
+$colors: (
+	brand: (
+		primary: #2a2b2f,
+		secondary: #efefef,
+		accent: #34dddd
+	),
+	basics: (
+		white-default: #fff,
+		black-default: #000,
+		success: #dff2bf,
+		error: #ffbaba,
+		accessibility: #fc0
+	)
+);
+
+/*========================================
+
+	Spacing Variables
+
+========================================*/
+
+$spacing: (
+	x-small: 5px,
+	small: 10px,
+	medium: 20px,
+	large: 30px
+);
+
+/*========================================
+
+	Z-index Variables
+
+========================================*/
+
+$layers: (
+	below:						-1,
+	default:					1,
+	overlay: 					10,
+	modal: 						500,
+	header:						1000,
+	the-godfather: 				9999,
+);

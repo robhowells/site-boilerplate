@@ -1,114 +1,141 @@
+/**
+* Set up & configuration
+* ----------------
+* Gulp packages
+* Top level dev and dist directories
+* Lower level file paths
+* Plugin configurations
+*/
+
 var gulp = require('gulp'),
-	sass = require('gulp-sass'),
-	plumber = require('gulp-plumber');
-	autoprefixer = require('gulp-autoprefixer'),
-	cleanCSS = require('gulp-clean-css'), 
-	concat = require('gulp-concat'),
-	uglify = require('gulp-uglify'),
-	imagemin = require('gulp-imagemin'),
-	csscomb = require('gulp-csscomb'),
-	sassLint = require('gulp-sass-lint');
+	plugins = require('gulp-load-plugins')(),
+	del = require('del'),
+	browserify = require('browserify'),
+    source = require('vinyl-source-stream'),
+    buffer = require('vinyl-buffer'),
+	runSequence = require('run-sequence');
+
+var base = {
+	src: './src/',
+	dist: './dist/',
+	temp: '.tmp'
+};
 
 var paths = {
+	html: {
+		src: base.src + '**/*.html',
+		dist: base.dist
+	},
+	styles: {
+		src: base.src + 'scss/**/*.scss',
+		dist: base.dist + 'css/'
+	},
 	scripts: {
-		src: ['./js/src/vendors/*.js', './js/src/components/*.js', './js/src/*.js'],
-		dist: './js/dist',
-		lint: ['./js/src/components/*.js', './js/src/*.js']
-	},
-	sass: {
-		src: './scss/**/*.scss',
-		dist: './css',
-		lint: ['./scss/base/**/*.scss', './scss/global/**/*.scss', './scss/layout/**/*.scss']
-	},
-	css: {
-		src: './css/style.css',
+		src: base.src + 'js/**/*.js',
+		dist: base.dist + 'js/'
 	},
 	images: {
-		src: '.img/src/**/*.{jpg,jpeg,png,gif}', 
-		dist: './img/dist'
+		src: base.src + 'img/**/*.{jpg,jpeg,png,gif}',
+		dist: base.dist + 'img/'
 	}
 };
 
 var config = {
+	htmlMin: {
+		collapseWhitespace: true
+	},
+	sassLint: {
+		rules: {
+			'no-warn': 0,
+			'no-ids': 1,
+			'indentation': 0,
+			'no-css-comments': 0,
+			'property-sort-order': 0,
+			'mixins-before-declarations': 0,
+			'empty-line-between-blocks': 0,
+			'no-mergeable-selectors': 0
+		}
+	},
 	autoprefixer: {
 		browsers: ['last 2 versions', '> 5%', 'Firefox ESR']
 	},
 	images: {
 		options: {
-	      optimizationLevel: 3,
-	      progessive: true,
-	      interlaced: true
+			optimizationLevel: 3,
+			progessive: true,
+			interlaced: true
 	    }
+	},
+	server: {
+		livereload: true,
+		directoryListing: false,
+		open: true
 	}
+};
+
+/**
+* Helper functions
+* ----------------
+* Gets task groups from /gulp-tasks/ folder
+*/
+
+function getTask(task) {
+    return require('./gulp-tasks/' + task)(base, paths, config, gulp, plugins, del, browserify, source, buffer);
 }
 
-gulp.task('sass:dev', function () {
-	return gulp.src(paths.sass.src)
-		.pipe(plumber({
-			handleError: function (err) {
-				console.log(err);
-				this.emit('end');
-			}
-		}))
-		.pipe(sass())
-		.pipe(autoprefixer(config.autoprefixer))
-		.pipe(gulp.dest(paths.sass.dist))
+/**
+* Task groups
+* ----------------
+* Run via 'gulp dev' (development) or 'gulp build' (production) 
+* See /gulp-tasks/ folder for task group contents
+*/
+
+gulp.task('html', getTask('html'));
+gulp.task('styles', getTask('styles'));
+gulp.task('es6', getTask('es6'));
+gulp.task('bundle', getTask('bundle'));
+gulp.task('scripts', ['es6', 'bundle']);
+gulp.task('images', getTask('images'));
+gulp.task('server', getTask('server'));
+gulp.task('clean', getTask('clean'));
+
+/**
+* Init mode
+* ----------------
+* Sets up required directories
+* Compiles any existing code
+*/
+
+gulp.task('init', ['html', 'styles', 'scripts', 'images'], function() {});
+
+/**
+* Development mode
+* ----------------
+* Sets production flag to false
+* Watches for file changes in dev directory
+* Compiles debug-friendly code into dist directory
+* Initiates server in dist directory
+*/
+
+gulp.task('dev', ['server'], function() {
+	config.isProduction = false;
+	gulp.watch(paths.html.src, ['html']);
+	gulp.watch(paths.styles.src, ['styles']);
+	gulp.watch(paths.scripts.src, ['scripts']);
+	gulp.watch(paths.images.src, ['images']);
 });
 
-gulp.task('sass:build', function () {
-	return gulp.src(paths.sass.src) 
-		.pipe(sass())
-		.pipe(autoprefixer(config.autoprefixer))
-		.pipe(cleanCSS({debug: true}, function(details) {
-			console.log('Original size of ' + details.name + ': ' + details.stats.originalSize + 'kb');
-			console.log('Minified size of ' + details.name + ': ' + details.stats.minifiedSize + 'kb');
-		}))
-		.pipe(concat('style.min.css'))
-		.pipe(csscomb())
-		.pipe(gulp.dest(paths.sass.dist));
-});
+/**
+* Production mode
+* ----------------
+* Sets production flag to true
+* Empties dev directory
+* Compiles production-ready code into dist directory
+*/
 
-gulp.task('lint:sass', function () {
-  return gulp.src(paths.sass.lint)
-    .pipe(sassLint({
-    	rules: {
-    		'no-warn': 0,
-        	'no-ids': 1,
-        	'indentation': 0,
-        	'no-css-comments': 0,
-        	'property-sort-order': 0,
-        	'mixins-before-declarations': 0,
-        	'empty-line-between-blocks': 0,
-        	'no-mergeable-selectors': 0,
-        	'no-color-literals': 0
-		},
-    }))
-    .pipe(sassLint.format())
-    .pipe(sassLint.failOnError())
+gulp.task('build', function() {
+	config.isProduction = true;
+	runSequence('clean',
+		['html', 'styles', 'scripts', 'images']
+	)
 });
-
-gulp.task('scripts:dev', function() {
-	return gulp.src(paths.scripts.src)
-		.pipe(concat('js.min.js'))
-		.pipe(gulp.dest(paths.scripts.dist)) 
-});
-
-gulp.task('scripts:build', function() {
-	return gulp.src(paths.scripts.src)
-		.pipe(concat('js.min.js'))
-		.pipe(uglify())
-		.pipe(gulp.dest(paths.scripts.dist))
-});
-
-gulp.task('imagemin', function() {
-	return gulp.src(paths.images.src)
-		.pipe(imagemin(config.images))
-		.pipe(gulp.dest(paths.images.dist));
-});
-
-gulp.task('watch', function() {
-	gulp.watch(paths.scripts.src, ['scripts:dev']);
-	gulp.watch(paths.sass.src, ['lint:sass', 'sass:dev']);
-});
-
-gulp.task('build', ['sass:build', 'scripts:build', 'imagemin'], function() {});

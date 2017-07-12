@@ -1,0 +1,175 @@
+/*========================================
+
+	Mixins
+	Credit: Sonny Prince - joint developer of mixins.scss
+	https://github.com/sonnyprince
+	_____________
+
+========================================*/
+
+// sass-lint:disable no-vendor-prefixes
+
+/*========================================
+
+	Breakpoints
+
+========================================*/
+
+@mixin breakpoint($mq-breakpoint, $mq-breakpoints: $breakpoints) {
+	@if map-has-key($mq-breakpoints, $mq-breakpoint) {
+		$mq-breakpoint: map-get($mq-breakpoints, $mq-breakpoint);
+	}
+	@media screen and (min-width: #{$mq-breakpoint}) {
+		@content;
+	}
+}
+
+/*========================================
+
+	Vertical Gradient
+
+========================================*/
+
+// sass-lint:disable no-duplicate-properties
+
+@mixin vertical-gradient($from-color, $from-percent, $to-color, $to-percent) {
+	background: $from-color;
+	background-image:     -webkit-linear-gradient(down, $from-color $from-percent, $to-color $to-percent); /* Chrome10-25,Safari5.1-6 */
+	background-image:         -moz-linear-gradient(down, $from-color $from-percent, $to-color $to-percent); /* FF3.6-15 */
+	background-image:           -ms-linear-gradient(down, $from-color $from-percent, $to-color $to-percent); /* IE10 */
+	background-image:               -o-linear-gradient(down, $from-color $from-percent, $to-color $to-percent); /* Opera 11.10+ */
+	background-image:                   linear-gradient(to bottom,  $from-color $from-percent, $to-color $to-percent); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: 'progid:DXImageTransform.Microsoft.gradient(GradientType=0StartColorStr="#{ie-hex-str($from-color)}", EndColorStr="#{ie-hex-str($to-color)}")'; /* IE6-9 */
+}
+
+// sass-lint:enable no-duplicate-properties
+
+/*========================================
+
+	Lists
+
+========================================*/
+
+@mixin block-list {
+	margin-left: 0;
+	list-style: none;
+	& > li {
+		float: none;
+		display: block;
+	}
+}
+
+@mixin inline-list {
+	margin-left: 0;
+	list-style: none;
+	& > li {
+		float: left;
+		margin-bottom: 0;
+	}
+}
+
+/*========================================
+
+	Placeholder
+
+========================================*/
+
+@mixin placeholder {
+	&::-webkit-input-placeholder { @content }
+	&:-moz-placeholder           { @content }
+	&::-moz-placeholder          { @content }
+	&:-ms-input-placeholder      { @content }
+}
+
+/*========================================
+
+   Background Images
+
+========================================*/
+
+@mixin background-image {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+/*========================================
+
+   Positioning
+
+========================================*/
+
+@mixin center-vertically {
+	top: 50%;
+	position: absolute;
+	transform: translateY(-50%);
+}
+
+/*========================================
+
+	Text Ellipsis
+
+========================================*/
+
+@mixin truncate {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+/*========================================
+
+   Horizonal Scrolling
+
+========================================*/
+
+@mixin inner-scroll {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+	-webkit-overflow-scrolling: touch; // sass-lint:disable-line no-misspelled-properties
+	& > li {
+		float: none;
+		white-space: normal;
+		display: inline-block;
+	}
+}
+
+/*========================================
+
+	Aspect Ratio
+
+========================================*/
+
+@mixin aspect-ratio($width, $height) {
+	position: relative;
+	&::before {
+		content: '';
+		width: 100%;
+		display: block;
+		padding-top: ($height / $width) * 100%;
+	}
+	> .content {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+}
+
+/*========================================
+
+	Responsive Fonts
+
+========================================*/
+
+@mixin rf($break, $size) {
+	@for $i from 1 through length($break) {
+		@include breakpoint(nth($break, $i)) {
+	  		font-size: nth($size, $i) + px;
+		}
+	}
+}
+
+// sass-lint:enable no-vendor-prefixes

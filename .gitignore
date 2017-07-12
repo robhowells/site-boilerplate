@@ -50,8 +50,10 @@ Thumbs.db
 # Ignore bundler config
 /.bundle
 
-# Ignore the build directory
-#/build
+# Ignore the build & temp directory contents
+/dist
+.tmp/
+!dist/.gitkeep 
 
 # Ignore Sass' cache
 /.sass-cache
@@ -61,4 +63,3 @@ Thumbs.db
 
 # Ignore the Node Modules folder
 /node_modules
-/phantomas

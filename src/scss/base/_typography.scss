@@ -1,0 +1,74 @@
+/*========================================
+
+    Typography
+    _____________
+
+========================================*/
+
+@mixin body-font {
+    font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+body {
+    @include body-font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.2;
+    margin-bottom: .5em;
+    color: palette(brand, primary);
+}
+
+h1 {
+    font-size: 30px;
+    @include rf(tablet desktop, 40 45);
+}
+
+h2 {
+    font-size: 25px;
+    @include rf(tablet desktop, 30 35);
+}
+
+h3 {
+    font-size: 22px;
+    @include rf(tablet desktop, 25 30);
+}
+
+h4 {
+    font-size: 18px;
+    @include rf(tablet desktop, 22 25);
+}
+
+h5 {
+    font-size: 16px;
+    @include rf(tablet desktop, 18 22);
+}
+
+h6 {
+    font-size: 14px;
+    @include rf(tablet desktop, 16 18);
+}
+
+p,
+li,
+a {
+    line-height: 2;
+    font-size: 14px;
+    margin-bottom: .75em;
+    @include rf(tablet desktop, 16 18);
+    color: palette(brand, primary);
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+a {
+    &:hover {
+        color: palette(brand, accent);
+    }
+}

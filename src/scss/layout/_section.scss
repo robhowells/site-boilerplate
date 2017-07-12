@@ -1,0 +1,21 @@
+/*========================================
+
+	Section
+	_____________
+
+========================================*/
+
+.section-padded {
+	&--xs {
+		padding: spacing(x-small) 0;
+	}
+	&--sm {
+		padding: spacing(small) 0;
+	}
+	&--md {
+		padding: spacing(medium) 0;
+	}
+	&--lg {
+		padding: spacing(large) 0;
+	}
+}
