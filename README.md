@@ -1,5 +1,5 @@
 # Site boilerplate
-Example base starter project
+Example starter project
 
 ## Features
 
@@ -8,8 +8,9 @@ Example base starter project
 
 ### Styles
 - Modular SASS directory structure
+- Mobile-first
 - Starter functions, mixins and helpers
-- SASS compilation, linting, combing and minification
+- SASS compilation, source maps, linting, combing, and minification
 
 ### Scripts
 - Modular JS directory structure
@@ -19,6 +20,10 @@ Example base starter project
 ### Task automation
 - Gulp task runner
 - Seperated gulp tasks
+
+### Other features
+- Distinct build and production environments
+- Development server
 
 ## Getting started
 - Clone / download the repo and cd to project root
