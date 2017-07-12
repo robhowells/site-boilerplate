@@ -17,7 +17,7 @@
 
 /*========================================
 
-	Z-index Function
+	Spacing Function
 
 ========================================*/
 
@@ -36,7 +36,7 @@
 
 ========================================*/
 
-@function layer($name) {
+@function zlayer($name) {
 	@if map-has-key($layers, $name) {
 		@return map-get($layers, $name);
 	} else {
