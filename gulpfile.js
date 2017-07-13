@@ -7,13 +7,15 @@
 * Plugin configurations
 */
 
-var gulp = require('gulp'),
-	plugins = require('gulp-load-plugins')(),
-	del = require('del'),
-	browserify = require('browserify'),
-    source = require('vinyl-source-stream'),
-    buffer = require('vinyl-buffer'),
-	runSequence = require('run-sequence');
+'use strict';
+
+const gulp = require('gulp');
+const plugins = require('gulp-load-plugins')();
+const del = require('del');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const runSequence = require('run-sequence');
 
 const base = {
 	src: './src',
@@ -79,9 +81,7 @@ const config = {
 * Gets task groups from /gulp-tasks/ folder
 */
 
-function getTask(task) {
-    return require('./gulp-tasks/' + task)(base, paths, config, gulp, plugins, del, browserify, source, buffer);
-}
+const getTask = (task) => require('./gulp-tasks/' + task)(base, paths, config, gulp, plugins, del, browserify, source, buffer);
 
 /**
 * Task groups
@@ -100,15 +100,6 @@ gulp.task('server', getTask('server'));
 gulp.task('clean', getTask('clean'));
 
 /**
-* Init mode
-* ----------------
-* Sets up required directories
-* Compiles any existing code
-*/
-
-gulp.task('init', ['html', 'styles', 'scripts', 'images'], function() {});
-
-/**
 * Development mode
 * ----------------
 * Sets production flag to false
@@ -117,7 +108,7 @@ gulp.task('init', ['html', 'styles', 'scripts', 'images'], function() {});
 * Initiates server in dist directory
 */
 
-gulp.task('dev', ['server'], function() {
+gulp.task('dev', ['server'], () => {
 	config.isProduction = false;
 	gulp.watch(paths.html.src, ['html']);
 	gulp.watch(paths.styles.src, ['styles']);
@@ -133,7 +124,7 @@ gulp.task('dev', ['server'], function() {
 * Compiles production-ready code into dist directory
 */
 
-gulp.task('build', function() {
+gulp.task('build', () => {
 	config.isProduction = true;
 	runSequence('clean',
 		['html', 'styles', 'scripts', 'images']

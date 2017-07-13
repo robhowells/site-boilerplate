@@ -27,5 +27,10 @@ Example starter project
 
 ## Getting started
 - Clone / download the repo and cd to project root
-- Open the command line or terminal and run 'npm install' to install all the required dependencies
-- Run 'gulp dev' to start dev server and start watching for file changes 
+- Open the command line or terminal and run ```'npm install'``` to install all the required dependencies
+- Run ```gulp dev```  to start dev server and start watching for file changes 
+- Run ```gulp build``` for production-ready code
+
+## Releases
+- V1.1 - Fixed issue with clean task. Converted gulp tasks to ES6
+- V1 - Created project
