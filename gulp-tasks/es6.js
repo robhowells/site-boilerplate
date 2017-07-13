@@ -12,6 +12,6 @@ module.exports = function (base, paths, config, gulp, plugins) {
 		.pipe(plugins.eslint())
         .pipe(plugins.eslint.format())
         .pipe(plugins.babel())
-        .pipe(gulp.dest('.tmp'));
+        .pipe(gulp.dest(`${base.temp}`));
 	};
 };

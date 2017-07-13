@@ -7,7 +7,7 @@
 
 module.exports = function (base, paths, config, gulp, plugins, del, browserify, source, buffer) {
 	return function () {
-		browserify('./' + base.temp +'/app.js')
+		browserify(`${base.temp}/app.js`)
 		.bundle()
 		.pipe(source('app.js'))
 		.pipe(buffer())

@@ -15,32 +15,32 @@ var gulp = require('gulp'),
     buffer = require('vinyl-buffer'),
 	runSequence = require('run-sequence');
 
-var base = {
-	src: './src/',
-	dist: './dist/',
-	temp: '.tmp'
+const base = {
+	src: './src',
+	dist: './dist',
+	temp: './.tmp'
 };
 
-var paths = {
+const paths = {
 	html: {
-		src: base.src + '**/*.html',
-		dist: base.dist
+		src: `${base.src}/**/*.html`,
+		dist: `${base.dist}/`
 	},
 	styles: {
-		src: base.src + 'scss/**/*.scss',
-		dist: base.dist + 'css/'
+		src: `${base.src}/scss/**/*.scss`,
+		dist: `${base.dist}/css/`
 	},
 	scripts: {
-		src: base.src + 'js/**/*.js',
-		dist: base.dist + 'js/'
+		src: `${base.src}/js/**/*.js`,
+		dist: `${base.dist}/js/`
 	},
 	images: {
-		src: base.src + 'img/**/*.{jpg,jpeg,png,gif}',
-		dist: base.dist + 'img/'
+		src: `${base.src}/img/**/*.{jpg,jpeg,png,gif}`,
+		dist: `${base.dist}/img/`
 	}
 };
 
-var config = {
+const config = {
 	htmlMin: {
 		collapseWhitespace: true
 	},
