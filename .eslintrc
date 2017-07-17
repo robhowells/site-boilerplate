@@ -21,6 +21,7 @@
     "one-var": ["error", { var: "always", let: "never", const: "never" }],
     "padded-blocks": ["error", { blocks: "never", classes: "always", switches: "always" }],
     "newline-before-return": "off",
+    "space-before-function-paren": "off",
     "no-console": ["error", { allow: ["warn", "error"] }]
   }
 }

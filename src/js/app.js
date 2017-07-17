@@ -1,24 +1,32 @@
-const myModule = require("./modules/module.js");
+import DoMath from "./modules/doMath.js";
+import Speak from "./modules/speak.js";
 
-const const1 = 1;
-const const2 = 2;
-
-// Single expression
-const sum1 = (param1, param2) => param1 + param2;
-
-// Multiple expressions
-const sum2 = (param1, param2) => {
-	const paramSum = param1 + param2;
-
-	return paramSum * const1;
+const user = {
+	"age": 29,
+	"firstname": "Rob",
+	"lastname": "Howells"
 };
 
-// No paramters
-const sum3 = () => const1 + const2;
+class Person {
 
-sum1(const1, const2);
-sum2(const1, const2);
-sum3();
+	constructor(data) {
+		this.firstname = data.firstname;
+		this.lastname = data.lastname;
+		this.age = data.age;
+	}
 
-// Imported module
-myModule.init(const1);
+	introduction() {
+		const increment = 1;
+		const sum = new DoMath(this.age);
+		const ageNextYear = sum.init(increment);
+		const content = `
+				Hello my name is ${this.firstname} ${this.lastname}.
+				Next birthday I'll be ${ageNextYear} years old.`;
+		const talk = new Speak(content);
+		talk.init();
+	}
+
+}
+
+const rob = new Person(user);
+rob.introduction();
