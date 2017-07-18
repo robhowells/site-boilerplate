@@ -10,4 +10,4 @@ class Speak {
 
 }
 
-export default Speak;
+export {Speak};

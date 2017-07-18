@@ -10,4 +10,4 @@ class DoMath {
 
 }
 
-export default DoMath;
+export {DoMath};

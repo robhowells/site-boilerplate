@@ -1,5 +1,5 @@
-import DoMath from "./modules/doMath.js";
-import Speak from "./modules/speak.js";
+import {DoMath} from "./modules/doMath.js";
+import {Speak} from "./modules/speak.js";
 
 const user = {
 	"age": 29,
